@@ -1,0 +1,12 @@
+Source: fishbones-live
+Section: admin
+Priority: optional
+Maintainer: Will Elliott <troutcobbler@gmail.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.5.1
+Homepage: https://bitbucket.org/troutcobbler/fishbones-live
+
+Package: fishbones-live
+Architecture: amd64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Populates a live hatchery user's home dir.

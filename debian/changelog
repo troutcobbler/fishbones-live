@@ -1,0 +1,95 @@
+fishbones-live (0.2.13) pecos; urgency=medium
+
+  * Rebuild for pecos.
+
+ -- Will Elliott <troutcobbler@gmail.com>  Sun, 28 May 2023 01:21:14 -0600
+
+fishbones-live (0.2.12) steelhead; urgency=medium
+
+  * Updated fishbones-live.install. 
+
+ -- Will Elliott <troutcobbler@gmail.com>  Wed, 05 Apr 2023 21:14:38 -0600
+
+fishbones-live (0.2.11) steelhead; urgency=medium
+
+  * Fixed the xinit, sway, & PATH stuff. 
+
+ -- Will Elliott <troutcobbler@gmail.com>  Wed, 05 Apr 2023 20:05:02 -0600
+
+fishbones-live (0.2.10) steelhead; urgency=medium
+
+  * Added wayland related stuff 
+
+ -- Will Elliott <troutcobbler@gmail.com>  Wed, 05 Apr 2023 17:03:46 -0600
+
+fishbones-live (0.2.9) steelhead; urgency=medium
+
+  * Reverted back to 5s. 
+
+ -- Will Elliott <troutcobbler@gmail.com>  Tue, 21 Mar 2023 01:31:44 -0600
+
+fishbones-live (0.2.8) steelhead; urgency=medium
+
+  * Reverted installer dialog delay back to 3s.
+
+ -- Will Elliott <troutcobbler@gmail.com>  Mon, 20 Mar 2023 17:00:19 -0600
+
+fishbones-live (0.2.7) steelhead; urgency=medium
+
+  * Updated $PATH & fixed installer dialog delay.
+
+ -- Will Elliott <troutcobbler@gmail.com>  Wed, 01 Mar 2023 20:10:24 -0700
+
+fishbones-live (0.2.6) steelhead; urgency=medium
+
+  * Switched to native format for easier packaging.
+
+ -- Will Elliott <troutcobbler@gmail.com>  Tue, 28 Feb 2023 17:52:02 -0700
+
+fishbones-live (0.2.5-1~steelhead+1) steelhead; urgency=medium
+
+  * Cleaning up xprofile.
+
+ -- Will Elliott <troutcobbler@gmail.com>  Tue, 28 Feb 2023 17:40:48 -0700
+
+fishbones-live (0.2.4-1~steelhead+1) steelhead; urgency=medium
+
+  * Welcome dialog is cleaner.
+
+ -- Will Elliott <troutcobbler@gmail.com>  Wed, 22 Feb 2023 23:24:25 -0700
+
+fishbones-live (0.2.3-1~steelhead+1) steelhead; urgency=medium
+
+  * Bumped version.
+
+ -- Will Elliott <troutcobbler@gmail.com>  Thu, 02 Feb 2023 21:04:33 -0700
+
+fishbones-live (0.2.2-1~steelhead+2) steelhead; urgency=medium
+
+  * Fixed a typo. 
+
+ -- Will Elliott <troutcobbler@gmail.com>  Thu, 02 Feb 2023 20:53:33 -0700
+
+fishbones-live (0.2.2-1~steelhead+1) steelhead; urgency=medium
+
+  * Added welcome dialog for steelhead. 
+
+ -- Will Elliott <troutcobbler@gmail.com>  Thu, 02 Feb 2023 19:41:56 -0700
+
+fishbones-live (0.2.1-1~riogrande+1) riogrande; urgency=medium
+
+  * Moved fishbones-live live-build related settings to this package
+
+ -- Will Elliott <troutcobbler@gmail.com>  Sun, 29 Jan 2023 19:52:49 -0700
+
+fishbones-live (0.2.0-1~riogrande+1) riogrande; urgency=medium
+
+  * Reverted username/password/hostname to defaults.
+
+ -- Will Elliott <troutcobbler@gmail.com>  Tue, 27 Dec 2022 21:31:17 -0700
+
+fishbones-live (0.1.0-1~riogrande+1) riogrande; urgency=medium
+
+  * Initial Release.
+
+ -- Will Elliott <troutcobbler@gmail.com>  Tue, 29 Nov 2022 23:04:00 -0700

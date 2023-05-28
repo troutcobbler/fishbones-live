@@ -1,0 +1,3 @@
+usr/bin/fishbones-live.sh usr/bin
+usr/lib/live/config/0031-hatchery-user-setup usr/lib/live/config
+usr/lib/live/config/0141-remove-zz-live-config-xinit usr/lib/live/config
