@@ -83,10 +83,10 @@ cat << EOF >> /home/user/.xprofile
 sleep 5s && eww open welcome-dialog &
 EOF
 
-cat << EOF >> /home/user/.config/sway/config
+cat << EOF >> /home/user/.config/hypr/hyprland.conf
 
 # welcome dialog
-exec sleep 5s && eww-wayland -c \$HOME/.config/eww-wayland open welcome-dialog
+exec-once = sleep 5s && eww-wayland -c \$HOME/.config/eww-wayland open welcome-dialog
 EOF
 
 chown -R user:user /home/user

@@ -1,3 +1,9 @@
+fishbones-live (0.2.14) pecos; urgency=medium
+
+  * Swapped sway for hyprland. 
+
+ -- Will Elliott <troutcobbler@gmail.com>  Fri, 21 Jul 2023 01:47:05 -0600
+
 fishbones-live (0.2.13) pecos; urgency=medium
 
   * Rebuild for pecos.

@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: fishbones-live
 Upstream-Contact: troutcobbler@gmail.com 
-Source: https://bitbucket.org/troutcobbler/fishbones-live
+Source: https://github.com/troutcobbler/fishbones-live
 
 Files: *
 Copyright: 2020-2022 troutcobbler@gmail.com
