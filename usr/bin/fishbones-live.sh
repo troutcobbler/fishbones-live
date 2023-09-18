@@ -41,7 +41,7 @@ cat << EOF >> /home/user/.config/eww/eww.yuck
   (welcome-widget))
 EOF
 
-cat << EOF >> /home/user/.config/eww-wayland/eww.yuck
+cat << EOF >> /home/user/.config/eww-sway/eww.yuck
 
 
 ;;;;;;;;;;;;;;;;;
@@ -83,10 +83,10 @@ cat << EOF >> /home/user/.xprofile
 sleep 5s && eww open welcome-dialog &
 EOF
 
-cat << EOF >> /home/user/.config/hypr/hyprland.conf
+cat << EOF >> /home/user/.config/sway/config
 
 # welcome dialog
-exec-once = sleep 5s && eww-wayland -c \$HOME/.config/eww-wayland open welcome-dialog
+exec sleep 5s && eww-wayland -c \$HOME/.config/eww-sway open welcome-dialog
 EOF
 
 chown -R user:user /home/user
