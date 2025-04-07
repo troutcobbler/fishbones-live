@@ -8,6 +8,21 @@ sed -i "s/USERNAME/user/g" /home/user/.config/gtk-3.0/bookmarks
 
 cat << EOF >> /home/user/.config/awesome/rc.lua
 
+-- Install popup widgets
+install_cancel = wibox.widget {
+    text   = "LIVE",
+    align = "center",
+    halign = "center",
+    widget = wibox.widget.textbox,
+}
+
+install_yes = wibox.widget {
+    text   = "INSTALL",
+    align = "center",
+    halign = "center",
+    widget = wibox.widget.textbox,
+}
+
 -- Install popup
 install = awful.popup {
     widget = {
