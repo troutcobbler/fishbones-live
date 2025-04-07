@@ -1,3 +1,9 @@
+fishbones-live (0.3.1) gila; urgency=medium
+
+  * bumped version now that popup is fixed 
+
+ -- Will Elliott <troutcobbler@gmail.com>  Mon, 07 Apr 2025 17:11:05 -0600
+
 fishbones-live (0.3.0) gila; urgency=medium
 
   * swapped awesome for eww stuff
