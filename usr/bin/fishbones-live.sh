@@ -6,87 +6,97 @@ cp -r /usr/share/hatchery/skel/. /home/user
 
 sed -i "s/USERNAME/user/g" /home/user/.config/gtk-3.0/bookmarks
 
-cat << EOF >> /home/user/.config/eww/eww.yuck
+cat << EOF >> /home/user/.config/awesome/rc.lua
 
+-- Install popup
+install = awful.popup {
+    widget = {
+        {
+            {
+                widget = wibox.container.margin,
+                margins = 20,
+                {
+                    {
+                        widget = wibox.container.margin,
+                        margins = 20,
+                        {
+                            text   = 'Welcome to hatchery Linux!',
+                            align = "center",
+                            halign = "center",
+                            widget = wibox.widget.textbox
+                        },
+                    },
+                    {
+                        text   = 'Install now or explore the live-session?',
+                        align = "center",
+                        halign = "center",
+                        widget = wibox.widget.textbox
+                    },
+                    layout = wibox.layout.fixed.vertical,
+                },
+            },
+            {
+                {
+                    top = 4,
+                    bottom = 4,
+                    left = 22,
+                    right = 12,
+                    widget = wibox.container.margin,
+                    {
+                        bg     = color0,
+                        shape = bubble,
+                        widget = wibox.container.background,
+                        {
+                            margins = 5,
+                            widget = wibox.container.margin,
+                            {
+                                widget = install_cancel,
+                            },
+                        },
+                    },
+                },
+                {
+                    top = 4,
+                    bottom = 4,
+                    left = 12, 
+                    right = 22,
+                    widget = wibox.container.margin,
+                    {
+                        bg     = color0,
+                        shape = bubble,
+                        widget = wibox.container.background,
+                        {
+                            margins = 5,
+                            widget = wibox.container.margin,
+                            {
+                                widget = install_yes,
+                            },
+                        },
+                    },
+                },
+                layout = wibox.layout.flex.horizontal,
+            },
+            layout = wibox.layout.fixed.vertical,
+        },
+        margins = 10,
+        widget  = wibox.container.margin
+    },
+    placement    = awful.placement.centered,
+    ontop        = true,
+    visible      = true,
+    minimum_width = 480,
+    minimum_height = 120,
+}
 
-;;;;;;;;;;;;;;;;;
-;; welcome dialog
-;;;;;;;;;;;;;;;;;
+-- Install popup functions
+install_cancel:connect_signal("button::release", function(self)
+    install.visible = false
+end)
 
-
-;; welcome widget
-(defwidget welcome-widget []
-(box :orientation "v"
-     :space-evenly "false"
-     :spacing "5"
-     :vexpand "false"
-     :class "confirm-padding"
-     "Welcome to hatchery Linux!"
-(box :orientation "v"
-     :space-evenly "false"
-     :spacing "5"
-     :vexpand "false"
-     :class "confirm-padding"
-     "Install now or explore the live-session?"
-  (box :class "confirm-padding"
-       :spacing "25"
-    (button :class "metric"
-            :onclick "eww close welcome-dialog" "LIVE")
-    (button :class "metric"
-            :onclick "eww close welcome-dialog && sudo calamares" "INSTALL")))))
-
-;; welcome dialog
-(defwindow welcome-dialog
-  :geometry (geometry :height "120px" :width "480px" :anchor "center")
-  (welcome-widget))
-EOF
-
-cat << EOF >> /home/user/.config/eww-sway/eww.yuck
-
-
-;;;;;;;;;;;;;;;;;
-;; welcome dialog
-;;;;;;;;;;;;;;;;;
-
-
-;; welcome widget
-(defwidget welcome-widget []
-(box :orientation "v"
-     :space-evenly "false"
-     :spacing "5"
-     :vexpand "false"
-     :class "confirm-padding"
-     "Welcome to hatchery Linux!"
-(box :orientation "v"
-     :space-evenly "false"
-     :spacing "5"
-     :vexpand "false"
-     :class "confirm-padding"
-     "Install now or explore the live-session?"
-  (box :class "confirm-padding"
-       :spacing "25"
-    (button :class "metric"
-            :onclick "\${eww_cmd} close welcome-dialog" "LIVE")
-    (button :class "metric"
-            :onclick "\${eww_cmd} close welcome-dialog && sudo calamares" "INSTALL")))))
-
-;; welcome dialog
-(defwindow welcome-dialog
-  :monitor 0
-  :geometry (geometry :height "120px" :width "480px" :anchor "center")
-  (welcome-widget))
-EOF
-
-cat << EOF >> /home/user/.xprofile
-
-# welcome dialog
-sleep 5s && eww open welcome-dialog &
-EOF
-
-cat << EOF >> /home/user/.config/sway/config
-
-# welcome dialog
-exec sleep 5s && eww-wayland -c \$HOME/.config/eww-sway open welcome-dialog
+install_yes:connect_signal("button::release", function(self)
+    install.visible = false
+    awful.spawn.easy_async("sudo calamares", function() end)
+end)
 EOF
 
 chown -R user:user /home/user
