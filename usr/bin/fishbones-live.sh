@@ -101,6 +101,7 @@ install = awful.popup {
     visible      = true,
     minimum_width = 480,
     minimum_height = 120,
+    screen = awful.screen.focused()
 }
 
 -- Install popup functions
