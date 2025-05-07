@@ -1,3 +1,9 @@
+fishbones-live (0.3.3) gila; urgency=medium
+
+  * updated copyright info, changed architecture to all
+
+ -- Will Elliott <troutcobbler@gmail.com>  Tue, 06 May 2025 19:41:22 -0600
+
 fishbones-live (0.3.2) gila; urgency=medium
 
   * fixed installer popup to appear on focused screen

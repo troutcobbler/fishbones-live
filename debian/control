@@ -7,6 +7,6 @@ Standards-Version: 4.5.1
 Homepage: https://github.com/troutcobbler/fishbones-live
 
 Package: fishbones-live
-Architecture: amd64
+Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Populates a live hatchery user's home dir.
