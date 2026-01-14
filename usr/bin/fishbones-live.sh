@@ -6,113 +6,90 @@ cp -r /usr/share/hatchery/skel/. /home/user
 
 sed -i "s/USERNAME/user/g" /home/user/.config/gtk-3.0/bookmarks
 
-cat << EOF >> /home/user/.config/awesome/rc.lua
+sed -i '$d' /home/user/.config/quickshell/shell.qml
 
--- Install popup widgets
-install_cancel = wibox.widget {
-    text   = "LIVE",
-    align = "center",
-    halign = "center",
-    widget = wibox.widget.textbox,
+cat << EOF >> /home/user/.config/quickshell/shell.qml
+
+        // Install
+        PopupWindow {
+            id: installPopup
+            anchor.window: bar
+            anchor.rect.x: screen.width / 2 - (width / 2)
+            anchor.rect.y: screen.height / 2 - (height / 2)
+            implicitWidth: 480
+            implicitHeight: 120
+            visible: true
+            color: colorBg
+
+            Text {
+                anchors.top: parent.top
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.topMargin: 25
+                color: colorFg
+                font {
+                    family: fontFamily
+                    pixelSize: fontSize
+                }
+                text: "Install now or explore the live-session?"
+            }
+
+            Rectangle {
+                anchors.bottom: parent.bottom
+                anchors.left: parent.left
+                anchors.bottomMargin: 15
+                anchors.leftMargin: 35
+                width: 190
+                height: 35
+                radius: 5
+                color: color0
+
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    color: colorFg
+                    font {
+                        family: fontFamily
+                        pixelSize: fontSize
+                    }
+                    text: "LIVE"
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: installPopup.visible = false
+                }
+            }
+
+            Rectangle {
+                anchors.bottom: parent.bottom
+                anchors.right: parent.right
+                anchors.bottomMargin: 15
+                anchors.rightMargin: 35
+                width: 190
+                height: 35
+                radius: 5
+                color: color0
+
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    color: colorFg
+                    font {
+                        family: fontFamily
+                        pixelSize: fontSize
+                    }
+                    text: "INSTALL"
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        installPopup.visible = false;
+                        Quickshell.execDetached(["sudo", "calamares"]);
+                    }
+                }
+            }
+        }
+    }
 }
-
-install_yes = wibox.widget {
-    text   = "INSTALL",
-    align = "center",
-    halign = "center",
-    widget = wibox.widget.textbox,
-}
-
--- Install popup
-install = awful.popup {
-    widget = {
-        {
-            {
-                widget = wibox.container.margin,
-                margins = 20,
-                {
-                    {
-                        widget = wibox.container.margin,
-                        margins = 20,
-                        {
-                            text   = 'Welcome to hatchery Linux!',
-                            align = "center",
-                            halign = "center",
-                            widget = wibox.widget.textbox
-                        },
-                    },
-                    {
-                        text   = 'Install now or explore the live-session?',
-                        align = "center",
-                        halign = "center",
-                        widget = wibox.widget.textbox
-                    },
-                    layout = wibox.layout.fixed.vertical,
-                },
-            },
-            {
-                {
-                    top = 4,
-                    bottom = 4,
-                    left = 22,
-                    right = 12,
-                    widget = wibox.container.margin,
-                    {
-                        bg     = color0,
-                        shape = bubble,
-                        widget = wibox.container.background,
-                        {
-                            margins = 5,
-                            widget = wibox.container.margin,
-                            {
-                                widget = install_cancel,
-                            },
-                        },
-                    },
-                },
-                {
-                    top = 4,
-                    bottom = 4,
-                    left = 12, 
-                    right = 22,
-                    widget = wibox.container.margin,
-                    {
-                        bg     = color0,
-                        shape = bubble,
-                        widget = wibox.container.background,
-                        {
-                            margins = 5,
-                            widget = wibox.container.margin,
-                            {
-                                widget = install_yes,
-                            },
-                        },
-                    },
-                },
-                layout = wibox.layout.flex.horizontal,
-            },
-            layout = wibox.layout.fixed.vertical,
-        },
-        margins = 10,
-        widget  = wibox.container.margin
-    },
-    placement    = awful.placement.centered,
-    ontop        = true,
-    visible      = true,
-    minimum_width = 480,
-    minimum_height = 120,
-    screen = awful.screen.focused()
-}
-
--- Install popup functions
-install_cancel:connect_signal("button::release", function(self)
-    install.visible = false
-end)
-
-install_yes:connect_signal("button::release", function(self)
-    install.visible = false
-    awful.spawn.easy_async("sudo calamares", function() end)
-end)
 EOF
 
 chown -R user:user /home/user
